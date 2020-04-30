@@ -45,6 +45,17 @@ def get_data_gen():
     return data_gen
 
 
+# plot images in a 1x5 grid
+def plot_images(images_arr):
+    fig, axes = plt.subplots(1, 5, figsize=(20, 20))
+    axes = axes.flatten()
+    for img, ax in zip( images_arr, axes):
+        ax.imshow(img)
+        ax.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+
 ################################################################################
 # Main
 if __name__ == "__main__":
@@ -59,3 +70,7 @@ if __name__ == "__main__":
     # ----- ETL ----- #
     # ETL = Extraction, Transformation, Load
     train_data_gen = get_data_gen()
+
+    x = next(train_data_gen)
+    print(len(x))
+    plot_images(x[:5])
