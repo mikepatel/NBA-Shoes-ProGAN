@@ -74,3 +74,9 @@ if __name__ == "__main__":
     x = next(train_data_gen)
     print(len(x))
     plot_images(x[:5])
+
+    # ----- MODEL ----- #
+
+    # ----- TRAINING ----- #
+
+    # ----- SAVE ----- #
