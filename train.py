@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 from parameters import *
+from model import build_discriminator, build_generator
 
 
 ################################################################################
@@ -71,11 +72,28 @@ if __name__ == "__main__":
     # ETL = Extraction, Transformation, Load
     train_data_gen = get_data_gen()
 
+    """
     x = next(train_data_gen)
     print(len(x))
     plot_images(x[:5])
+    """
 
     # ----- MODEL ----- #
+    # discriminator
+    discriminator = build_discriminator()
+    discriminator_optimizer = tf.keras.optimizers.Adam(
+        learning_rate=LEARNING_RATE,
+        beta_1=BETA_1
+    )
+    discriminator.summary()
+
+    # generator
+    generator = build_generator()
+    generator_optimizer = tf.keras.optimizers.Adam(
+        learning_rate=LEARNING_RATE,
+        beta_1=BETA_1
+    )
+    generator.summary()
 
     # ----- TRAINING ----- #
 
