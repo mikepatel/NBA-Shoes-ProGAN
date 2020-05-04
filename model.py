@@ -10,6 +10,7 @@ File description:
 """
 ################################################################################
 # Imports
+import os
 import tensorflow as tf
 
 from parameters import *
@@ -19,6 +20,12 @@ from parameters import *
 # Discriminator
 def build_discriminator():
     model = tf.keras.Sequential()
+
+    # Layer: Conv: 8x8 (alpha path)
+
+    # Layer: Downsample (1-alpha path)
+
+    # Layer: Fade In
 
     # Layer: Conv: 4x4
     model.add(tf.keras.layers.Conv2D(
@@ -64,6 +71,8 @@ def build_generator():
         target_shape=(4, 4, 64)
     ))
 
+    # Conv higher resolution
+
     # Layer: Output: 4x4x3
     model.add(tf.keras.layers.Conv2DTranspose(
         filters=3,  # RGB
@@ -72,5 +81,7 @@ def build_generator():
         padding="same",
         activation=tf.keras.activations.tanh
     ))
+
+    # Layer: alpha
 
     return model
