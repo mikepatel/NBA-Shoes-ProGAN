@@ -216,3 +216,5 @@ if __name__ == "__main__":
     )
 
     # ----- SAVE ----- #
+    discriminator.save(os.path.join(os.getcwd(), "saved_models\\discriminator"))
+    generator.save(os.path.join(os.getcwd(), "saved_models\\generator"))
